@@ -1,4 +1,8 @@
 from __future__ import unicode_literals
+import ctypes
+
+kernel32 = ctypes.windll.kernel32
+kernel32.SetConsoleMode(kernel32.GetStdHandle(-11), 7)
 
 import os
 import platform
@@ -148,7 +152,7 @@ try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             ydl.download(temp_list)
             temp_list.clear()
-            print('\033[92m[Done \u2713]\033[0m')
+            print('\033[92m[Done √]\033[0m')
 
     print('\n\033[92m** Downloads completed! **\033[0m\n')
 except Exception as e:
